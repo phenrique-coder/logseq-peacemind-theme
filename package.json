@@ -1,0 +1,44 @@
+{
+  "name": "logseq-peacemind-theme",
+  "title": "PeaceMind Theme",
+  "version": "1.0.0",
+  "description": "😌 A calming, minimalist Logseq theme with 7 peaceful color palettes.",
+  "author": "phenrique-coder",
+  "license": "MIT",
+  "funding": {
+    "type": "buy-me-a-coffee",
+    "url": "https://buymeacoffee.com/phenrique.coder"
+  },
+  "keywords": [
+    "logseq",
+    "theme",
+    "peace-mind",
+    "minimalist",
+    "zen",
+    "productivity"
+  ],
+  "main": "index.js",
+  "logseq": {
+    "id": "logseq-peacemind-theme",
+    "theme": true,
+    "themes": [
+      {
+        "name": "PeaceMind",
+        "url": "./custom.css",
+        "description": "😌 A calming theme supporting both Light & Dark modes."
+      }
+    ],
+    "icon": "./icon.svg",
+    "settings": {
+      "palette": {
+        "title": "Color Palette",
+        "description": "Choose your peaceful accent color.",
+        "type": "string",
+        "default": "sage",
+        "enumChoices": ["sage", "slate", "sand", "rose", "sky", "moss", "clay"],
+        "enumMessages": ["Zen Sage (Default)", "Cool Slate", "Warm Sand", "Desert Rose", "Morning Sky", "Forest Moss", "Soft Clay"]
+      }
+    }
+  },
+  "effect": true
+}

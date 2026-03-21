@@ -1,0 +1,23 @@
+name: Publish Theme
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # ESSENCIAL: Dá permissão para criar o release
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Zip
+        run: |
+          zip -r logseq-peacemind-theme.zip . -x "*.git*" ".github/*" "screenshots/*"
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: logseq-peacemind-theme.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

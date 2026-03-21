@@ -1,0 +1,771 @@
+/* ─── Configurações dos Favoritos ─── */
+ul.favorites {
+	display: block !important;
+	flex-direction: column !important;
+	align-items: stretch !important;
+	gap: 0 !important;
+}
+
+ul.favorites > li.favorite-item {
+	display: block !important;
+	align-items: initial !important;
+}
+/* 
+  Peace Mind Theme for Logseq
+  Concepts: Zen, Minimalism, Dynamic Palettes
+*/
+
+/* --- Global Variables --- */
+:root {
+	--ls-font-family:
+		-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif;
+	--ls-main-content-max-width: 900px;
+	/* Defaults — sobrescritos dinamicamente pelo index.js */
+	--peace-accent-light: #8da399;
+	--peace-accent-dark: #a3b5a1;
+	--peace-accent-color: #6b9e8a; /* accentColor da paleta — usado na sidebar e hover */
+	--peace-bg-tint-light: #f9f7f2;
+	--peace-bg-tint-dark: #23272a;
+	--peace-sidebar-light: #f0f4f2;
+	--peace-sidebar-dark: #1e2224;
+	--peace-header-light: #f0f4f2;
+	--peace-header-dark: #1e2224;
+
+	/* --- Standardized Text Colors --- */
+	--peace-text-dark: #e2e8e5; /* Soft off-white sage */
+	--peace-text-light: #3a413e; /* Soft dark charcoal sage */
+}
+
+/* ─── Dark Mode ────────────────────────────────────────────────────────────── */
+.dark-theme,
+html[data-theme="dark"] {
+	--ls-primary-background-color: var(--peace-bg-tint-dark, #23272a);
+	--ls-secondary-background-color: rgba(0, 0, 0, 0.2);
+	--ls-tertiary-background-color: rgba(255, 255, 255, 0.05);
+
+	--ls-primary-text-color: var(--peace-text-dark);
+	--ls-secondary-text-color: color-mix(in srgb, var(--peace-text-dark) 65%, transparent);
+	--ls-title-text-color: var(--peace-accent-dark, #a3b5a1);
+	--peace-standard-text: var(--peace-text-dark);
+
+	--ls-link-text-color: var(--peace-accent-dark, #a3b5a1);
+	--ls-link-hover-text-color: #ffffff;
+
+	--ls-active-primary-color: var(--peace-accent-dark, #a3b5a1);
+	--ls-active-secondary-color: var(--peace-accent-dark, #a3b5a1);
+
+	--ls-border-color: rgba(255, 255, 255, 0.1);
+	--ls-secondary-border-color: rgba(255, 255, 255, 0.05);
+
+	--ls-block-bullet-color: var(--peace-accent-dark, #a3b5a1);
+	--ls-block-highlight-color: rgba(255, 255, 255, 0.03);
+	--ls-selection-background-color: rgba(255, 255, 255, 0.1);
+
+	--ls-page-title-color: var(--peace-accent-dark, #a3b5a1);
+	--ls-tag-text-color: var(--peace-accent-dark, #a3b5a1);
+	--ls-tag-background-color: rgba(255, 255, 255, 0.05);
+
+	--ls-left-sidebar-bg-color: var(--peace-sidebar-dark, #1e2224);
+	--ls-right-sidebar-bg-color: var(--peace-sidebar-dark, #1e2224);
+	--ls-header-bg-color: var(--peace-header-dark, #1e2224);
+}
+
+/* ─── Light Mode ───────────────────────────────────────────────────────────── */
+.white-theme,
+html[data-theme="light"] {
+	--ls-primary-background-color: var(--peace-bg-tint-light, #f9f7f2);
+	--ls-secondary-background-color: rgba(0, 0, 0, 0.03);
+	--ls-tertiary-background-color: rgba(0, 0, 0, 0.02);
+
+	--ls-primary-text-color: var(--peace-text-light);
+	--ls-secondary-text-color: color-mix(in srgb, var(--peace-text-light) 65%, transparent);
+	--ls-title-text-color: var(--peace-accent-light, #8da399);
+	--peace-standard-text: var(--peace-text-light);
+
+	--ls-link-text-color: var(--peace-accent-light, #8da399);
+	--ls-link-hover-text-color: #000000;
+
+	--ls-active-primary-color: var(--peace-accent-light, #8da399);
+	--ls-active-secondary-color: var(--peace-accent-light, #8da399);
+
+	--ls-border-color: rgba(0, 0, 0, 0.08);
+	--ls-secondary-border-color: rgba(0, 0, 0, 0.04);
+
+	--ls-block-bullet-color: var(--peace-accent-light, #8da399);
+	--ls-block-highlight-color: rgba(0, 0, 0, 0.02);
+	--ls-selection-background-color: rgba(0, 0, 0, 0.05);
+
+	--ls-page-title-color: var(--peace-accent-light, #8da399);
+	--ls-tag-text-color: var(--peace-accent-light, #8da399);
+	--ls-tag-background-color: rgba(0, 0, 0, 0.03);
+
+	--ls-left-sidebar-bg-color: var(--peace-sidebar-light, #f0f4f2);
+	--ls-right-sidebar-bg-color: var(--peace-sidebar-light, #f0f4f2);
+	--ls-header-bg-color: var(--peace-header-light, #f0f4f2);
+}
+
+/* ─── Área de edição principal e Diário/Journal ────────────────────────────── */
+.dark-theme #main-content-container,
+.dark-theme .cp__sidebar-main-content,
+.dark-theme .journal,
+.dark-theme .journal-item,
+.dark-theme .page-inner,
+.dark-theme .blocks-container,
+.dark-theme .editor-wrapper,
+.dark-theme .ls-block,
+html[data-theme="dark"] #main-content-container,
+html[data-theme="dark"] .cp__sidebar-main-content,
+html[data-theme="dark"] .journal,
+html[data-theme="dark"] .journal-item,
+html[data-theme="dark"] .page-inner,
+html[data-theme="dark"] .blocks-container,
+html[data-theme="dark"] .editor-wrapper,
+html[data-theme="dark"] .ls-block {
+	background-color: var(--peace-bg-tint-dark, #23272a);
+}
+
+.white-theme #main-content-container,
+.white-theme .cp__sidebar-main-content,
+.white-theme .journal,
+.white-theme .journal-item,
+.white-theme .page-inner,
+.white-theme .blocks-container,
+.white-theme .editor-wrapper,
+.white-theme .ls-block,
+html[data-theme="light"] #main-content-container,
+html[data-theme="light"] .cp__sidebar-main-content,
+html[data-theme="light"] .journal,
+html[data-theme="light"] .journal-item,
+html[data-theme="light"] .page-inner,
+html[data-theme="light"] .blocks-container,
+html[data-theme="light"] .editor-wrapper,
+html[data-theme="light"] .ls-block {
+	background-color: var(--peace-bg-tint-light, #f9f7f2);
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
+body {
+	font-family: var(--ls-font-family);
+	-webkit-font-smoothing: antialiased;
+	line-height: 1.6;
+}
+
+/* Título das páginas (no conteúdo principal) */
+#main-content-container .page-title,
+.cp__sidebar-main-content .page-title,
+h1.title,
+.title.block {
+	color: var(--ls-title-text-color) !important;
+	font-weight: 700 !important;
+	font-size: 2.25rem !important;
+	letter-spacing: -0.02em !important;
+	margin-bottom: 1.5rem !important;
+	line-height: 1.2 !important;
+}
+
+/* Transições suaves em toda a UI ao trocar paleta */
+*,
+*::before,
+*::after {
+	transition:
+		background-color 0.25s ease,
+		color 0.15s ease,
+		border-color 0.25s ease,
+		box-shadow 0.2s ease;
+}
+
+/* ─── Bullets ──────────────────────────────────────────────────────────────── */
+.bullet-container {
+	opacity: 0.85;
+	transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+.bullet-container:hover {
+	opacity: 1;
+	transform: scale(1.2);
+}
+
+/* Bullet Hierarchy Colors — baseadas na cor de acento do tema */
+.ls-block[level="1"] .bullet { background-color: var(--peace-accent-color) !important; }
+.ls-block[level="2"] .bullet { background-color: color-mix(in srgb, var(--peace-accent-color) 85%, transparent) !important; }
+.ls-block[level="3"] .bullet { background-color: color-mix(in srgb, var(--peace-accent-color) 70%, transparent) !important; }
+.ls-block[level="4"] .bullet { background-color: color-mix(in srgb, var(--peace-accent-color) 55%, transparent) !important; }
+.ls-block[level="5"] .bullet { background-color: color-mix(in srgb, var(--peace-accent-color) 40%, transparent) !important; }
+.ls-block[level="6"] .bullet { background-color: color-mix(in srgb, var(--peace-accent-color) 25%, transparent) !important; }
+
+/* Bullet fechado (com filhos ocultos) */
+.bullet-container.bullet-closed {
+	background-color: color-mix(in srgb, var(--peace-accent-color) 15%, transparent) !important;
+	border: 1px solid var(--peace-accent-color) !important;
+}
+
+/* Highlight do caminho ativo (Referência: Tema Cobra) */
+.ls-block:focus-within > div:first-child .bullet {
+	background-color: #ff4d4d !important; /* Destaque sutil em vermelho/coral */
+	box-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+	transform: scale(1.1);
+}
+
+/* ─── Scrollbars suaves ────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--ls-border-color);
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--ls-secondary-text-color);
+}
+
+#head {
+	background-color: var(--ls-header-bg-color, var(--ls-primary-background-color)) !important;
+	border-bottom: 1px solid var(--ls-border-color);
+	transition: background-color 0.2s ease;
+	height: 48px;
+	display: flex;
+	align-items: center;
+}
+
+#head .button {
+	background: transparent !important;
+	border: none !important;
+	color: var(--ls-primary-text-color) !important;
+	opacity: 0.8;
+	transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+#head .button:hover {
+	opacity: 1;
+	transform: translateY(-1px);
+	background-color: var(--ls-secondary-background-color) !important;
+}
+
+/* ─── Sidebars (Esquerda e Direita) ────────────────────────────────────────── */
+.left-sidebar-inner,
+.cp__right-sidebar-inner {
+	padding-top: 1.5rem;
+	background-color: var(--ls-left-sidebar-bg-color) !important;
+	border-right: 1px solid var(--ls-border-color);
+}
+
+.cp__right-sidebar-inner {
+	border-right: none;
+	border-left: 1px solid var(--ls-border-color);
+}
+
+/* Container de cada item de navegação/bloco na sidebar */
+.left-sidebar-inner .item,
+.cp__right-sidebar-inner .item,
+.cp__right-sidebar-inner .sidebar-item {
+	border-radius: 8px;
+	margin: 1px 6px;
+	padding: 6px 10px;
+	cursor: pointer;
+	box-shadow: inset 3px 0 0 transparent;
+	transition:
+		background-color 0.18s ease,
+		box-shadow 0.18s ease,
+		color 0.18s ease,
+		transform 0.12s ease;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+}
+
+/* ─── Cabeçalhos de Sessão (Sumário, Favoritos, Recentes, Conteúdo Direita) ─── */
+.left-sidebar-inner summary.header.items-center,
+.left-sidebar-inner .nav-content-item .header.items-center,
+.cp__right-sidebar-inner .sidebar-item-header {
+	position: sticky !important;
+	top: -1px; 
+	z-index: 5 !important;
+	font-size: 0.75rem !important;
+	font-weight: 700 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.08em !important;
+	color: var(--peace-accent-color, #6b9e8a) !important;
+	padding: 10px 14px !important;
+	border-radius: 4px !important;
+	background-color: var(--ls-left-sidebar-bg-color) !important;
+	cursor: pointer !important;
+	margin: 2px 4px 6px 4px !important;
+	transition: all 0.2s ease !important;
+	border-bottom: 1px solid color-mix(in srgb, var(--ls-border-color) 40%, transparent) !important;
+}
+
+/* Hover nos cabeçalhos de sessão */
+.left-sidebar-inner summary.header.items-center:hover,
+.left-sidebar-inner .nav-content-item .header.items-center:hover,
+.cp__right-sidebar-inner .sidebar-item-header:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--peace-accent-color, #6b9e8a) 8%,
+		var(--ls-left-sidebar-bg-color)
+	) !important;
+	transform: translateX(2px);
+}
+
+/* Estilo para o link interno do cabeçalho de Favoritos/Recentes */
+.left-sidebar-inner .nav-content-item .header.items-center a {
+	color: inherit !important;
+	text-decoration: none !important;
+}
+/* ─── Botão "Criar" (Footer da Sidebar) ─── */
+.left-sidebar-inner footer.create,
+footer.create {
+	padding: 1.25rem 0.75rem !important;
+	border-top: 1px solid var(--ls-border-color) !important;
+	background: transparent !important;
+}
+
+/* Selector ultra-específico para garantir a cor de fundo */
+.left-sidebar-inner footer.create button#create-button,
+#create-button {
+	width: 100% !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	padding: 0.75rem !important;
+	border-radius: 10px !important;
+	font-weight: 600 !important;
+	font-size: 0.95rem !important;
+	color: var(--peace-standard-text) !important;
+	background: var(--peace-accent-color, #6b9e8a) !important;
+	border: 1px solid rgba(255, 255, 255, 0.15) !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+	transition: all 0.2s ease !important;
+	cursor: pointer !important;
+}
+
+/* Hover "Blindado" - Garante que a cor do tema vença o padrão do Logseq */
+footer.create button#create-button:hover,
+#create-button:hover {
+	background: var(--peace-accent-color, #6b9e8a) !important;
+	background-image: none !important;
+	filter: brightness(1.1) !important;
+	transform: translateY(-2px) !important;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2) !important;
+	opacity: 1 !important;
+}
+
+/* Anula camadas extras que o Logseq possa injetar no hover */
+#create-button:hover::before,
+#create-button:hover::after {
+	display: none !important;
+	content: none !important;
+}
+
+#create-button:active {
+	transform: translateY(0) !important;
+	filter: brightness(0.9) !important;
+}
+
+#create-button .ti-plus {
+	font-size: 1rem;
+	margin-right: -2px;
+}
+
+/*
+  Truncamento de texto nos itens de FAVORITOS e RECENTES.
+  Essas seções usam .nav-content-item com um <a> como filho direto.
+  Aplicamos overflow aqui sem tocar no layout da navegação principal.
+*/
+.nav-content-item .item a,
+.nav-content-item .item > span {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
+
+/* Hover: destaque sutil com a cor de acento */
+.left-sidebar-inner .item:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--peace-accent-color, #6b9e8a) 12%,
+		transparent
+	);
+	box-shadow: inset 3px 0 0
+		color-mix(in srgb, var(--peace-accent-color, #6b9e8a) 50%, transparent);
+	transform: translateX(2px);
+}
+
+/* Estado ativo: borda sólida e texto na accentColor */
+.left-sidebar-inner .item.active,
+.left-sidebar-inner .item.selected {
+	background-color: color-mix(
+		in srgb,
+		var(--peace-accent-color, #6b9e8a) 18%,
+		transparent
+	);
+	box-shadow: inset 3px 0 0 var(--peace-accent-color, #6b9e8a);
+	color: var(--peace-accent-color, #6b9e8a) !important;
+	font-weight: 500;
+}
+
+/* Ícones da sidebar herdam a cor de acento quando ativos */
+.left-sidebar-inner .item.active .tie,
+.left-sidebar-inner .item.active .ti,
+.left-sidebar-inner .item.selected .tie,
+.left-sidebar-inner .item.selected .ti,
+.cp__right-sidebar-inner .item.active .ti,
+.cp__right-sidebar-inner .item.selected .ti {
+	color: var(--peace-accent-color, #6b9e8a) !important;
+}
+
+/* ─── Hover nos links de páginas (recent pages, page refs, backlinks) ──────── */
+
+/* Links na área do conteúdo principal */
+.page-ref,
+.page-ref a,
+a.page-ref {
+	border-radius: 4px;
+	padding: 1px 5px;
+	background-color: color-mix(in srgb, var(--peace-accent-color) 4%, transparent);
+	border: 1px solid color-mix(in srgb, var(--peace-accent-color) 8%, transparent);
+	transition: all 0.15s ease;
+}
+
+.page-ref:hover,
+.page-ref a:hover,
+a.page-ref:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--peace-accent-color, #6b9e8a) 15%,
+		transparent
+	);
+	color: var(--peace-accent-color, #6b9e8a) !important;
+	text-decoration: none;
+}
+
+/*
+  FAVORITOS e RECENTES — Fix baseado no DOM real inspecionado via CDP
+  ─────────────────────────────────────────────────────────────────────
+  DOM real:
+    li.favorite-item
+      └─ span[data-state]
+           └─ a.flex.items-center.justify-between.relative.group   ← inline-flex nativo
+                ├─ span.page-icon.ml-3.justify-center  (ml-3 = margin-left: 12px Tailwind)
+                ├─ span.page-title
+                └─ button (menu de 3 pontos, absoluto à direita)
+
+  Problemas:
+    1. `a` é inline-flex — não estica para preencher a largura do li
+    2. ml-3 no ícone é suficiente; adicionar gap cria duplo espaçamento
+    3. span[data-state] inline → a não tem contagem de largura do li
+
+  Fix:
+    - span[data-state] → display:block para dar contexto de largura
+    - a → display:flex (bloco, estica 100%); mantém justify-between
+      para que o botão de três pontos fique corretamente à direita
+    - page-title → flex:1 + min-width:0 para truncamento
+    - Sem gap extra: ml-3 do ícone já provê espaçamento correto
+*/
+
+/* 1. Span wrapper como bloco — dá largura definida ao anchor */
+li.favorite-item > span[data-state],
+li.recent-item > span[data-state] {
+	display: block;
+	width: 100%;
+	overflow: hidden;
+}
+
+/* 2. O item li em si — fornece o background de hover/active */
+li.favorite-item,
+li.recent-item {
+	border-radius: 6px;
+	transition: background-color 0.15s ease;
+	margin: 1px 4px;
+	padding: 2px 0; /* respiro vertical para o background */
+}
+
+/* 3. Anchor: forçamos flex e centralização total */
+li.favorite-item a,
+li.recent-item a {
+	display: flex !important;
+	align-items: center !important; /* alinhamento vertical */
+	justify-content: center !important; /* horizontal */
+	width: 100%;
+	padding: 4px 10px;
+	font-size: 0.7rem; /* fonte ainda menor */
+	gap: 8px;
+	text-decoration: none !important;
+	min-width: 0;
+}
+
+/* 4. Ícone: garantimos que não tenha margens empurrando para o lado */
+li.favorite-item .page-icon,
+li.recent-item .page-icon,
+li.favorite-item .ui__icon,
+li.recent-item .ui__icon {
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	flex-shrink: 0;
+}
+
+
+/* 5. Truncamento do título */
+li.favorite-item .page-title,
+li.recent-item .page-title {
+	flex: 1;
+	min-width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1; /* ajuda no alinhamento vertical com ícone */
+}
+
+/* 6. Hover */
+li.favorite-item:hover,
+li.recent-item:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--peace-accent-color, #6b9e8a) 8%,
+		transparent
+	);
+}
+
+li.favorite-item:hover .page-title,
+li.recent-item:hover .page-title {
+	color: var(--peace-accent-color, #6b9e8a) !important;
+}
+
+/* ─── Links gerais com underline sutil ─────────────────────────────────────── */
+a.link {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+}
+
+a.link:hover {
+	text-decoration-color: var(--peace-accent-color, #6b9e8a);
+}
+
+/* ─── Referências Vinculadas (Linked References) ────────────────────────────── */
+.references-blocks-item {
+	margin-bottom: 2rem;
+	padding: 1.25rem;
+	border-radius: 12px;
+	border: 1px solid var(--ls-border-color);
+	/* Background levemente matizado com a cor do tema */
+	background-color: color-mix(in srgb, var(--peace-accent-color) 3%, var(--ls-primary-background-color)) !important;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.references-blocks-item:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+	background-color: color-mix(in srgb, var(--peace-accent-color) 5%, var(--ls-primary-background-color)) !important;
+}
+
+/* Título da página nas referências */
+.references-blocks-item .foldable-title .page-ref {
+	font-weight: 600;
+	font-size: 1.1rem;
+	color: var(--peace-accent-color) !important;
+	opacity: 0.95;
+}
+
+/* Breadcrumb (contexto dos pais) nas referências */
+.references-blocks-item .breadcrumb {
+	opacity: 1;
+	font-size: 0.85rem;
+	margin: 0.5rem 0 1.2rem -10px;
+	padding: 4px 12px;
+	border-radius: 6px;
+	background-color: color-mix(in srgb, var(--peace-accent-color) 10%, transparent);
+	color: var(--peace-accent-color);
+	width: fit-content;
+}
+
+.references-blocks-item .breadcrumb a {
+	color: inherit;
+	font-weight: 500;
+}
+
+/* Ajuste nos blocos dentro das referências */
+.references-blocks-item .ls-block {
+	background-color: transparent !important;
+	border-left: 2px solid color-mix(in srgb, var(--peace-accent-color) 15%, transparent);
+	margin-left: 10px;
+}
+
+/* Seta de expansão nas referências */
+.references-blocks-item .rotating-arrow svg {
+	color: var(--peace-accent-color);
+	opacity: 0.6;
+}
+
+/* ─── Checkboxes Tematizados (Checkbox) ────────────────────────────────────── */
+.form-checkbox,
+input[type="checkbox"].form-checkbox,
+input[type="checkbox"].checkbox {
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	display: inline-block !important;
+	vertical-align: middle !important;
+	width: 1rem !important;
+	height: 1rem !important;
+	border-radius: 4px !important;
+	border: 1.5px solid color-mix(in srgb, var(--peace-accent-color) 40%, var(--ls-border-color)) !important;
+	background-color: var(--ls-primary-background-color) !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+	position: relative !important;
+}
+
+.form-checkbox:hover {
+	border-color: var(--peace-accent-color) !important;
+	background-color: color-mix(in srgb, var(--peace-accent-color) 5%, transparent) !important;
+}
+
+.form-checkbox:checked {
+	background-color: var(--peace-accent-color) !important;
+	border-color: var(--peace-accent-color) !important;
+	background-size: 80% 80% !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
+/* ─── Marcadores de Tarefa (LATER, NOW, DONE) ────────────────────────────── */
+.marker-switch {
+	font-weight: 700 !important;
+	padding: 1px 6px !important;
+	border-radius: 4px !important;
+	font-size: 0.75rem !important;
+	transition: all 0.2s ease !important;
+	border: 1px solid transparent !important;
+	margin-right: 4px !important;
+}
+
+.marker-switch:hover {
+	filter: brightness(1.1);
+	transform: translateY(-1px);
+}
+
+.marker-switch.LATER {
+	background-color: color-mix(in srgb, var(--peace-accent-color) 10%, transparent) !important;
+	color: var(--peace-accent-color) !important;
+	border-color: color-mix(in srgb, var(--peace-accent-color) 20%, transparent) !important;
+}
+
+.marker-switch.NOW {
+	background-color: var(--peace-accent-color) !important;
+	color: #ffffff !important;
+}
+
+.marker-switch.DONE {
+	background-color: color-mix(in srgb, var(--peace-text-dark) 5%, transparent) !important;
+	color: color-mix(in srgb, var(--peace-accent-color) 50%, transparent) !important;
+	border: 1px dashed color-mix(in srgb, var(--peace-accent-color) 30%, transparent) !important;
+	opacity: 1 !important; /* Garantir que NÃO suma */
+}
+
+.dark-theme .marker-switch.DONE {
+	background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.light-theme .marker-switch.DONE {
+	background-color: rgba(0, 0, 0, 0.05) !important;
+	color: color-mix(in srgb, var(--peace-accent-color) 60%, black) !important;
+}
+
+/* Checkmark BRANCO para o modo Dark */
+.dark-theme .form-checkbox:checked,
+html[data-theme="dark"] .form-checkbox:checked {
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E") !important;
+}
+
+/* Checkmark ESCURO para o modo Light */
+.white-theme .form-checkbox:checked,
+html[data-theme="light"] .form-checkbox:checked {
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23333333' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E") !important;
+}
+
+/* ─── Menus Dropdown ───────────────────────────────────────────────────────── */
+.dropdown-wrapper {
+	background-color: var(--ls-primary-background-color) !important;
+	border: 1px solid var(--ls-border-color) !important;
+	border-radius: 12px !important;
+	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15) !important;
+	padding: 8px !important;
+	overflow: hidden !important;
+}
+
+.menu-link {
+	border-radius: 8px !important;
+	margin: 2px 10px !important;
+	padding: 8px 12px !important;
+	transition: all 0.2s ease !important;
+	color: var(--peace-standard-text) !important;
+}
+
+.menu-link:hover {
+	background-color: color-mix(in srgb, var(--peace-accent-color) 12%, transparent) !important;
+	color: var(--peace-accent-color) !important;
+}
+
+.menu-link .ui__icon {
+	color: var(--peace-accent-color) !important;
+	opacity: 0.8;
+}
+
+/* Atalhos de teclado dentro do menu */
+.menu-link .keyboard-shortcut button {
+	background-color: color-mix(in srgb, var(--peace-standard-text) 8%, transparent) !important;
+	border: 1px solid color-mix(in srgb, var(--peace-standard-text) 15%, transparent) !important;
+	color: var(--peace-standard-text) !important;
+	opacity: 0.7;
+}
+
+/* ─── Tags (a.tag) ─────────────────────────────────────────────────────────── */
+a.tag {
+	display: inline-block !important;
+	padding: 2px 8px !important;
+	margin: 0 2px !important;
+	border-radius: 4px !important;
+	font-size: 0.8rem !important;
+	font-weight: 500 !important;
+	text-decoration: none !important;
+	border: 1px solid color-mix(in srgb, var(--peace-accent-color) 20%, transparent) !important;
+	background-color: color-mix(in srgb, var(--peace-accent-color) 8%, transparent) !important;
+	color: var(--peace-accent-color) !important;
+	transition: all 0.2s ease !important;
+}
+
+a.tag:hover {
+	background-color: var(--peace-accent-color) !important;
+	color: var(--peace-standard-text) !important;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+a.tag:active {
+	transform: scale(0.95);
+	filter: brightness(0.9);
+}
+
+/* Tags especiais inspiradas no tema Cobra */
+a.tag[href*="important"],
+a.tag[href*="urgente"] {
+	border-color: #ff4d4d77 !important;
+	background-color: #ff4d4d15 !important;
+	color: #ff4d4d !important;
+}
+
+a.tag[href*="important"]:hover,
+a.tag[href*="urgente"]:hover {
+	background-color: #ff4d4d !important;
+	color: #ffffff !important;
+}
