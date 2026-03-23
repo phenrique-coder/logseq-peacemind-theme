@@ -152,7 +152,9 @@ function clearPeaceMindStyles() {
 		"--peace-sidebar-dark",
 		"--peace-header-light",
 		"--peace-header-dark",
-	].forEach((prop) => docRoot.style.removeProperty(prop));
+	].forEach((prop) => {
+		docRoot.style.removeProperty(prop);
+	});
 }
 
 
@@ -316,7 +318,52 @@ function closeMenu() {
 }
 
 // ─── main ────────────────────────────────────────────────────────────────────
+
+/**
+ * Aguarda até que o parent.document.documentElement esteja disponível.
+ * Necessário porque, na primeira instalação pela loja, o plugin pode
+ * ser inicializado antes do DOM do Logseq estar completamente pronto.
+ *
+ * @param {number} timeout  — tempo máximo de espera em ms (padrão 10s)
+ * @param {number} interval — intervalo entre tentativas em ms (padrão 250ms)
+ * @returns {Promise<void>}
+ */
+function waitForParentReady(timeout = 10000, interval = 250) {
+	return new Promise((resolve, reject) => {
+		const start = Date.now();
+		const check = () => {
+			try {
+				if (
+					typeof parent !== "undefined" &&
+					parent.document &&
+					parent.document.documentElement &&
+					parent.document.body
+				) {
+					resolve();
+					return;
+				}
+			} catch (_) {
+				/* cross-origin ou não pronto ainda */
+			}
+
+			if (Date.now() - start > timeout) {
+				reject(new Error("[PeaceMind] parent document not ready after timeout"));
+				return;
+			}
+			setTimeout(check, interval);
+		};
+		check();
+	});
+}
+
 async function main() {
+	// Aguarda o DOM do parent estar disponível
+	try {
+		await waitForParentReady();
+	} catch (err) {
+		console.warn(err.message, "– will retry once on theme change");
+	}
+
 	// Carrega as paletas do arquivo separado
 	const { palettes, defaultPalette } = await import("./palettes.js");
 
@@ -333,29 +380,29 @@ async function main() {
 
 	// Cleanup total ao descarregar plugin
 	logseq.beforeunload(async () => {
-		const styleEl = parent.document.getElementById("peacemind-dynamic-style");
-		if (styleEl) styleEl.remove();
-
-		const docRoot = parent.document.documentElement;
-		const props = [
-			"--peace-accent-light",
-			"--peace-accent-dark",
-			"--peace-accent-color",
-			"--peace-bg-tint-light",
-			"--peace-bg-tint-dark",
-			"--peace-sidebar-light",
-			"--peace-sidebar-dark",
-			"--peace-header-light",
-			"--peace-header-dark",
-		];
-		props.forEach((prop) => docRoot.style.removeProperty(prop));
+		clearPeaceMindStyles();
 	});
 
 	// Aplicação imediata ao carregar
-	// O plugin só é carregado pelo Logseq quando o tema está ativo, então sempre aplicamos.
-	// O botão da toolbar some automaticamente quando o plugin é desativado/desinstalado.
-	applyPalette(palettes, logseq.settings.palette || defaultPalette);
+	const currentPalette = logseq.settings?.palette || defaultPalette;
+	applyPalette(palettes, currentPalette);
 
+	// Retry: se o style element não foi criado (parent não pronto na 1ª vez),
+	// observa o DOM e reaplicar quando body aparecer.
+	if (!parent.document.getElementById("peacemind-dynamic-style")) {
+		const retryInterval = setInterval(() => {
+			try {
+				if (parent.document?.body) {
+					applyPalette(palettes, logseq.settings?.palette || defaultPalette);
+					clearInterval(retryInterval);
+				}
+			} catch (_) {
+				/* silently retry */
+			}
+		}, 500);
+		// Safety: para o retry após 15s
+		setTimeout(() => clearInterval(retryInterval), 15000);
+	}
 
 	// Modelo de eventos
 	logseq.provideModel({
@@ -382,6 +429,11 @@ async function main() {
 	logseq.onSettingsChanged((newSettings) => {
 		if (_isApplying) return;
 		applyPalette(palettes, newSettings.palette);
+	});
+
+	// Re-aplica quando o tema muda (light/dark toggle)
+	logseq.App.onThemeModeChanged(() => {
+		applyPalette(palettes, logseq.settings?.palette || defaultPalette);
 	});
 }
 

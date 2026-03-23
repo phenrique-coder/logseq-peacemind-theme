@@ -35,8 +35,8 @@
         "description": "Choose your peaceful accent color.",
         "type": "string",
         "default": "sage",
-        "enumChoices": ["sage", "slate", "sand", "rose", "sky", "moss", "clay"],
-        "enumMessages": ["Zen Sage (Default)", "Cool Slate", "Warm Sand", "Desert Rose", "Morning Sky", "Forest Moss", "Soft Clay"]
+        "enumChoices": ["sage", "slate", "sand", "rose", "horizon", "moss", "clay"],
+        "enumMessages": ["Zen Sage (Default)", "Cool Slate", "Warm Sand", "Desert Rose", "Infinite Horizon", "Forest Moss", "Soft Clay"]
       }
     }
   },

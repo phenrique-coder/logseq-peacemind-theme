@@ -59,7 +59,7 @@ export const palettes = {
 		headerDark: "#241D1C",
 		name: "Desert Rose",
 	},
-	sky: {
+	horizon: {
 		light: "#4A90E2",
 		dark: "#82B1FF",
 		accentColor: "#1976D2",
