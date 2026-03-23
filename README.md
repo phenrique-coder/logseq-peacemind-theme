@@ -5,8 +5,8 @@ A calming, minimalist theme for Logseq that promotes focus and mental tranquilit
 [Leia em Português](./README.pt-BR.md)
 
 <div align="center">
-  <img src="https://img.shields.io/github/stars/phenrique-coder/logseq-peace-mind-theme?style=for-the-badge&color=8DA399&labelColor=333" />
-  <img src="https://img.shields.io/github/issues/phenrique-coder/logseq-peace-mind-theme?style=for-the-badge&color=D8AFA9&labelColor=333" />
+  <img src="https://img.shields.io/github/stars/phenrique-coder/logseq-peacemind-theme?style=for-the-badge&color=8DA399&labelColor=333" />
+  <img src="https://img.shields.io/github/issues/phenrique-coder/logseq-peacemind-theme?style=for-the-badge&color=D8AFA9&labelColor=333" />
   <a href="https://www.buymeacoffee.com/phenrique.coder">
     <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-Support-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black&labelColor=333" />
   </a>
@@ -15,7 +15,7 @@ A calming, minimalist theme for Logseq that promotes focus and mental tranquilit
 <br/>
 
 <div align="center">
-  <img src="screenshots/presentation.png" width="100%" style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); margin: 20px 0;" />
+  <img src="https://raw.githubusercontent.com/phenrique-coder/logseq-peacemind-theme/main/screenshots/presentation.png" width="100%" style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); margin: 20px 0;" />
 </div>
 
 <br/>
@@ -24,7 +24,7 @@ A calming, minimalist theme for Logseq that promotes focus and mental tranquilit
 The theme features an exclusive palette selector to switch between different atmospheres:
 
 <div align="center">
-  <img src="screenshots/colors-options.png" width="60%" style="border-radius: 8px; border: 1px solid #ddd;" />
+  <img src="https://raw.githubusercontent.com/phenrique-coder/logseq-peacemind-theme/main/screenshots/colors-options.png" width="60%" style="border-radius: 8px; border: 1px solid #ddd;" />
 </div>
 
 ## Features
