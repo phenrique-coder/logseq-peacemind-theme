@@ -29,12 +29,12 @@ ul.favorites > li.favorite-item {
 	--peace-bg-tint-dark: #23272a;
 	--peace-sidebar-light: #f0f4f2;
 	--peace-sidebar-dark: #1e2224;
-	--peace-header-light: #f0f4f2;
+	--peace-header-light: #f5f5f5;
 	--peace-header-dark: #1e2224;
 
 	/* --- Standardized Text Colors --- */
-	--peace-text-dark: #e2e8e5; /* Soft off-white sage */
-	--peace-text-light: #3a413e; /* Soft dark charcoal sage */
+	--peace-text-dark: #fffdf0; /* Soft off-white sage */
+	--peace-text-light: #505050; /* Soft dark charcoal sage */
 }
 
 /* ─── Dark Mode ────────────────────────────────────────────────────────────── */
@@ -336,7 +336,7 @@ footer.create {
 	font-weight: 600 !important;
 	font-size: 0.95rem !important;
 	/* color: var(--peace-standard-text) !important; */
-	color: #fafafa !important;
+	color: var(--peace-standard-text,  #fafafa) !important;
 	background: var(--peace-accent-color, #6b9e8a) !important;
 	border: 1px solid rgba(255, 255, 255, 0.15) !important;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;

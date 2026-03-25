@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2026-03-25
+
+### Changed
+- **Typography & Contrast**: Refined standardized text colors for better readability across all themes (`--peace-text-dark` and `--peace-text-light`).
+- **Header Aesthetics**: Adjusted light mode header background color for a cleaner look.
+
+### Fixed
+- **Button Styling**: Linked "Create" button text color back to theme variables for better consistency.
+
 ## [1.1.2] - 2026-03-25
 
 ### Fixed
