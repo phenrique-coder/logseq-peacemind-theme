@@ -344,12 +344,14 @@ footer.create {
 	cursor: pointer !important;
 }
 
-/* Hover "Blindado" - Garante que a cor do tema vença o padrão do Logseq */
-footer.create button#create-button:hover,
-#create-button:hover,
+/* Hover "Super Blindado" para a Loja */
+html body #create-button:hover,
+html body .left-sidebar-inner footer.create button#create-button:hover,
+#create-button#create-button:hover,
 .ui__button.create:hover,
 .left-sidebar-inner #create-button:hover {
 	background: var(--peace-accent-color, #6b9e8a) !important;
+	background-color: var(--peace-accent-color, #6b9e8a) !important;
 	background-image: none !important;
 	filter: brightness(1.1) !important;
 	transform: translateY(-2px) !important;

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2026-03-25
+
+### Fixed
+- **Production Specifity**: Implemented "Super Shielded" CSS hover selectors for the "Create" button, ensuring the theme's visual identity prevails over Logseq's native production styles in the Marketplace version.
+
 ## [1.1.1] - 2026-03-25
 
 ### Fixed
