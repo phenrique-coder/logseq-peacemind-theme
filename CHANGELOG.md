@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.1.5] - 2026-03-28
+## [1.1.4] - 2026-03-28
 
 ### Fixed
 - **Numbered Lists**: Fixed formatting issue where numbered list background was displaying as an uneven oval. Improved the styling to dynamically use a capsule ("pill") format that cleanly adapts to numbers of any length (e.g., Roman numerals) while staying perfectly aligned with standard bullet points.
