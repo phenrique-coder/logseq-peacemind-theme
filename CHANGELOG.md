@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.7] - 2026-03-31
+
+### Added
+- **Decorative Blockquotes**: Added elegant, large quotation marks (`\201C` and `\201D`) to blockquotes, using serif typography for a refined literary aesthetic.
+
+### Fixed
+- **Focal Block Highlight**: Redesigned the active block highlight into a clean "capsule" style that only affects the current line being edited, preventing messy color cascades across parent blocks.
+
 ## [1.1.6] - 2026-03-31
 
 ### Added
