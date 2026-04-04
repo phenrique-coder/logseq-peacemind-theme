@@ -27,6 +27,13 @@ O tema conta com um seletor exclusivo para você alternar entre as atmosferas:
   <img src="https://raw.githubusercontent.com/phenrique-coder/logseq-peacemind-theme/main/screenshots/colors-options.png" width="60%" style="border-radius: 8px; border: 1px solid #ddd;" />
 </div>
 
+## 🏮 Citações Elegantes
+O tema agora conta com alinhamento inteligente para autores e design refinado:
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/phenrique-coder/logseq-peacemind-theme/main/screenshots/blockquote.png" width="80%" style="border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.12);" />
+</div>
+
 ## Destaques
 
 - **Paleta de Paz Mental**: Projetada para reduzir a fadiga ocular e promover o foco.

@@ -27,6 +27,13 @@ The theme features an exclusive palette selector to switch between different atm
   <img src="https://raw.githubusercontent.com/phenrique-coder/logseq-peacemind-theme/main/screenshots/colors-options.png" width="60%" style="border-radius: 8px; border: 1px solid #ddd;" />
 </div>
 
+## 🏮 Elegant Blockquotes
+The theme now features smart alignment for quote authors and a refined design:
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/phenrique-coder/logseq-peacemind-theme/main/screenshots/blockquote.png" width="80%" style="border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.12);" />
+</div>
+
 ## Features
 
 - **Mental Peace Palette**: Designed to reduce eye strain and promote focus.

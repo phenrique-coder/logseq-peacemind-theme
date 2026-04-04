@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-04-04
+
+### Added
+- **Smart Blockquote Authors**: Automatically aligns the last line of a blockquote to the right, creating a professional "signature" look for authors.
+- **Accent Color for Authors**: Added a dynamic styling rule that highlights author names with the theme's active accent color when formatted with italics (`_text_`), bold (`**text**`), or page links (`[[text]]`).
+
+### Changed
+- **Blockquote Refinement**: Redesigned blockquotes with increased padding (24px 36px), a thicker 4px accent border, and subtle box-shadow for a more "premium" and framed aesthetic.
+- **Text Alignment**: Switched blockquote content to `text-align: justify` by default for a clearer, book-like appearance.
+
+### Fixed
+- **Trailing Break Issue**: Implemented a CSS fix to remove trailing `<br>` tags that Logseq occasionally injects at the end of blocks, ensuring the "last-line" alignment property works reliably for authors.
+
 ## [1.1.9] - 2026-04-02
 
 ### Added
